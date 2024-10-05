@@ -1,5 +1,5 @@
 <template>
-  <the-header />
+	<the-header />
 </template>
 
 <script>
@@ -14,9 +14,9 @@ export default {
 
 <style>
 :root {
-    --pink: #ff2e63;
-    --electric-pink: #ff00a8;
-    --electric-blue: #00f0ff;
+	--pink: #ff2e63;
+	--electric-pink: #ff00a8;
+	--electric-blue: #00f0ff;
 }
 
 * {
@@ -29,10 +29,12 @@ html {
 
 body {
 	margin: 0;
-    background-color: black;
+	background-color: black;
+	width: 100vw;
+	height: 100vh;
 }
 
 a {
-  text-decoration: none;
+	text-decoration: none;
 }
 </style>
