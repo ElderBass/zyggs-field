@@ -1,0 +1,18 @@
+:root {
+    --pink: #ff2e63;
+    --electric-pink: #ff00a8;
+    --electric-blue: #00f0ff;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-family: "Roboto", sans-serif;
+}
+
+body {
+	margin: 0;
+    background-color: black;
+}
