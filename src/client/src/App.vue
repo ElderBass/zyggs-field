@@ -17,7 +17,7 @@ export default {
 	--pink: #ff2e63;
 	--electric-pink: #ff00a8;
 	--electric-blue: #00f0ff;
-  --abyssal-black: #130d11;
+	--abyssal-black: #130d11;
 }
 
 * {

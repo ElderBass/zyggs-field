@@ -15,7 +15,7 @@
 							:url="link.url"
 							:text="link.text"
 							:decorated="false"
-                            :callback="toggleDropdown"
+							:callback="toggleDropdown"
 						/>
 					</li>
 				</ul>
@@ -49,7 +49,7 @@ export default {
 <style scoped>
 .navDropdown {
 	position: relative;
-    background: var(--abyssal-black);
+	background: var(--abyssal-black);
 }
 
 .navDropdownButton {

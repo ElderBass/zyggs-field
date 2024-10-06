@@ -20,10 +20,10 @@ export default {
 		};
 	},
 	methods: {
-        submitPing() {
-            console.log("submitPing");
-        },
-    },
+		submitPing() {
+			console.log("submitPing");
+		},
+	},
 	computed: {},
 };
 </script>
