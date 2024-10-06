@@ -8,7 +8,7 @@
 				:key="link.url"
 				:url="link.url"
 				:text="link.text"
-				:decorated="true"
+				:dropdown="false"
 			/>
 		</nav>
 	</header>
@@ -27,8 +27,8 @@ export default {
 		return {
 			navLinks: [
 				{ url: "/who-am-i", text: "whoami" },
-				{ url: "/ping-me", text: "ping me" },
 				{ url: "/prolixities", text: "prolixities" },
+				{ url: "/ping-me", text: "ping me" },
 			],
 			width: window.innerWidth,
 		};
