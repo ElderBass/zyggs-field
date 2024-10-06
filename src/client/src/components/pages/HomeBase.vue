@@ -1,25 +1,15 @@
 <template>
-    <div>
-        this is where the projects will be listed
-    </div>
+	<div>this is where the projects will be listed</div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      
-    }
-  },
-  methods: {
-    
-  },
-  computed: {
-    
-  },
-}
+	data() {
+		return {};
+	},
+	methods: {},
+	computed: {},
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

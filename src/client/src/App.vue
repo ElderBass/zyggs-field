@@ -17,6 +17,7 @@ export default {
 	--pink: #ff2e63;
 	--electric-pink: #ff00a8;
 	--electric-blue: #00f0ff;
+	--abyssal-black: #130d11;
 }
 
 * {
@@ -29,7 +30,7 @@ html {
 
 body {
 	margin: 0;
-	background-color: black;
+	background-color: var(--abyssal-black);
 	width: 100vw;
 	height: 100vh;
 }

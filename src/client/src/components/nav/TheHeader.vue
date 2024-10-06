@@ -8,6 +8,7 @@
 				:key="link.url"
 				:url="link.url"
 				:text="link.text"
+				:decorated="true"
 			/>
 		</nav>
 	</header>

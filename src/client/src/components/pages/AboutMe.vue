@@ -1,11 +1,12 @@
 <template>
-    <div>
-        <h1>About Me</h1>
-        <p>
-            Hi, I'm a software engineer. I like to code, read, and write. I'm a
-            prolific writer, and I'm always looking for new opportunities to write.
-        </p>
-    </div>
+	<div>
+		<h1>About Me</h1>
+		<p>
+			Hi, I'm a software engineer. I like to code, read, and write. I'm a
+			prolific writer, and I'm always looking for new opportunities to
+			write.
+		</p>
+	</div>
 </template>
 
 <script>
