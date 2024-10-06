@@ -14,7 +14,7 @@
 						<nav-link
 							:url="link.url"
 							:text="link.text"
-							:decorated="false"
+							:dropdown="true"
 							:callback="toggleDropdown"
 						/>
 					</li>
@@ -50,18 +50,20 @@ export default {
 .navDropdown {
 	position: relative;
 	background: var(--abyssal-black);
+	font-family: "Fira Code", monospace;
+	z-index: 1000;
 }
 
 .navDropdownButton {
-	color: var(--electric-pink);
+	color: var(--electric-blue);
 	border: none;
-	background-color: transparent;
+	background: inherit;
 	font-size: 1.5rem;
 	transition: transform 0.5s;
 }
 
 .navDropdownButton:hover {
-	color: var(--electric-blue);
+	color: var(--electric-pink);
 }
 
 .rotated {
@@ -76,6 +78,8 @@ export default {
 	justify-content: center;
 	border-radius: 50%;
 	width: 180px;
+	height: 180px;
+	background: var(--abyssal-black);
 }
 
 .fade-enter-active {
@@ -99,8 +103,12 @@ li {
 	border-bottom: solid 1px var(--electric-blue);
 	padding: 1rem;
 }
+li:first-child {
+	padding-top: 1.5rem;
+}
 li:last-child {
 	border-bottom: none;
+	padding-bottom: 1.5rem;
 }
 
 @keyframes fadeIn {

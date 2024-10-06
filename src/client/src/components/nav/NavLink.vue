@@ -1,7 +1,7 @@
 <template>
 	<router-link
 		class="nav-link"
-		:class="{ active: isActive, decorated }"
+		:class="{ active: isActive, dropdown }"
 		:to="url"
 		@click="handleClick"
 	>
@@ -11,7 +11,7 @@
 
 <script>
 export default {
-	props: ["url", "text", "decorated", "callback"],
+	props: ["url", "text", "dropdown", "callback"],
 	computed: {
 		isActive() {
 			console.log(this.$route.path);
@@ -32,6 +32,12 @@ export default {
 .nav-link {
 	color: var(--electric-pink);
 	font-size: 1rem;
+	text-decoration: underline;
+}
+
+.dropdown {
+	font-size: 14px;
+	text-decoration: none;
 }
 
 .nav-link:hover {
@@ -40,9 +46,5 @@ export default {
 
 .active {
 	color: var(--electric-blue);
-}
-
-.decorated {
-	text-decoration: underline;
 }
 </style>

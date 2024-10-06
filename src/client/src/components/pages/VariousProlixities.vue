@@ -1,12 +1,16 @@
 <template>
-	<div>
+	<div class="prolixities">
 		<h1>Prolixities</h1>
-		<p>
-			I'm a prolific writer. I write about software engineering,
-			programming, and technology. I'm always looking for new
-			opportunities to write. If you have a writing opportunity for me,
-			please don't hesitate to contact me.
-		</p>
+
+		<base-card>
+			<h3>Something idk</h3>
+			<p>
+				I'm (not) a prolific writer. I write about software engineering,
+				programming, and technology. I'm always looking for new
+				opportunities to write. If you have a writing opportunity for
+				me, please don't hesitate to contact me.
+			</p>
+		</base-card>
 	</div>
 </template>
 
@@ -20,4 +24,19 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.prolixities {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	padding: 3rem 2rem;
+}
+
+h1 {
+	color: var(--electric-pink);
+	font-family: var(--computer-font);
+}
+</style>
