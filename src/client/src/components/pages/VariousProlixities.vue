@@ -1,6 +1,6 @@
 <template>
-	<div class="prolixities">
-		<h1>Prolixities</h1>
+	<base-page>
+		<h1>class <span class="pageName">Prolixities</span></h1>
 
 		<base-card>
 			<h3>Something idk</h3>
@@ -11,7 +11,7 @@
 				me, please don't hesitate to contact me.
 			</p>
 		</base-card>
-	</div>
+	</base-page>
 </template>
 
 <script>
@@ -38,5 +38,10 @@ export default {
 h1 {
 	color: var(--electric-pink);
 	font-family: var(--computer-font);
+	margin-bottom: 2rem;
+}
+
+.pageName {
+	color: var(--electric-blue);
 }
 </style>

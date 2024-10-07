@@ -15,5 +15,6 @@ export default {};
 	border-radius: 0.5rem;
 	box-shadow: 0 0 8px var(--electric-pink);
 	width: 100%;
+	max-width: 600px;
 }
 </style>

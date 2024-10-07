@@ -1,69 +1,166 @@
 <template>
-	<div class="pingMe">
+	<base-page>
+		<h1>function <span class="headerSpan">contactSeth()</span></h1>
 		<base-card>
-			<h1>function <span class="headerSpan">contactSeth()</span></h1>
 			<form @submit.prevent="submitPing">
 				<div class="inputField">
-					<label for="name"
-						>const <span class="label">name</span> =</label
-					>
+					<div class="labelContainer">
+						<label for="name"
+							>const <span class="label">name</span> =</label
+						>
+						<p v-if="errors.name" class="error">
+							ERR: {{ errors.name }}
+						</p>
+					</div>
+
 					<input
 						class="input"
-						type="text"
 						id="name"
 						name="name"
-						required
+						v-model="name"
+						@blur="validateString('name')"
 					/>
 				</div>
 				<div class="inputField">
-					<label for="email"
-						>const <span class="label">email</span> =</label
-					>
+					<div class="labelContainer">
+						<label for="email"
+							>const <span class="label">email</span> =</label
+						>
+						<p v-if="errors.email" class="error">
+							ERR: {{ errors.email }}
+						</p>
+					</div>
+
 					<input
 						class="input"
 						type="email"
 						id="email"
 						name="email"
-						required
+						v-model="email"
+						@blur="validateEmail"
 					/>
 				</div>
 				<div class="inputField">
-					<label for="message"
-						>const <span class="label">message</span> =</label
-					>
+					<div class="labelContainer">
+						<label for="message"
+							>const <span class="label">message</span> =</label
+						>
+						<p v-if="errors.message" class="error">
+							ERR: {{ errors.message }}
+						</p>
+					</div>
 					<textarea
 						class="input"
 						id="message"
 						name="message"
-						required
+						v-model="message"
+						@blur="validateString('message')"
 					></textarea>
 				</div>
-				<div class="actions">
-					<base-button type="link">return</base-button>
-					<base-button type="submit">Submit</base-button>
+				<div v-if="!submitted" class="actions">
+					<base-button
+						type="button"
+						buttonStyle="link"
+						@click="goBack"
+						>return</base-button
+					>
+					<base-button type="submit" :disabled="disabled"
+						>Submit</base-button
+					>
+				</div>
+				<p v-if="submitting">...</p>
+				<div v-if="submitted" class="success">
+					<p class="successMessage">
+						Message submitted. You may exit this terminal.
+					</p>
+					<base-button
+						type="button"
+						buttonStyle="link"
+						@click="goBack"
+					>
+						exit
+					</base-button>
 				</div>
 			</form>
 		</base-card>
-	</div>
+	</base-page>
 </template>
 
 <script>
+import { send } from "@emailjs/browser";
+
 export default {
 	data() {
 		return {
 			name: "",
 			email: "",
 			message: "",
+			submitted: false,
+			submitting: false,
+			errors: {
+				name: "",
+				email: "",
+				message: "",
+			},
 		};
 	},
 	methods: {
-		submitPing() {
-			console.log("submitPing");
+		async submitPing() {
+			try {
+				if (!this.validateEmail()) {
+					this.errors.email = "invalid email";
+					return;
+				}
+				this.submitting = true;
+				await send(
+					"service_1gqhxeh", // service ID
+					"template_yxhmh65", // template ID
+					{
+						name: this.name,
+						email: this.email,
+						message: this.message,
+					},
+				);
+
+				this.email = "";
+				this.name = "";
+				this.message = "";
+				this.errors = {
+					name: "",
+					email: "",
+					message: "",
+					submit: "",
+				};
+				this.submitted = true;
+				this.submitting = false;
+			} catch (error) {
+				console.error("Error sending email:", error);
+				this.submitted = false;
+			}
+		},
+		goBack() {
+			this.$router.go(-1);
+		},
+		validateString(field) {
+			if (!this[field]) {
+				this.errors[field] = `${field} required`;
+			} else {
+				this.errors[field] = "";
+			}
+		},
+		validateEmail() {
+			if (this.email.includes("@") && this.email.includes(".")) {
+				this.errors.email = "";
+				return true;
+			}
+			this.errors.email = "invalid email";
+			return false;
 		},
 	},
-	computed: {},
-	mounted() {
-		console.log("PingMe mounted");
+	computed: {
+		disabled() {
+			return !this.name || !this.email || !this.message;
+		},
 	},
 };
 </script>
@@ -72,22 +169,11 @@ export default {
 h1 {
 	font-family: var(--computer-font);
 	font-size: 1.5rem;
-	margin-bottom: 1rem;
+	margin-bottom: 1.5rem;
 }
 
 .headerSpan {
 	color: var(--electric-blue);
-	margin-left: 1rem;
-}
-
-.pingMe {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100%;
-	width: 100%;
-	padding: 3rem 2rem;
-	color: var(--electric-pink);
 }
 
 form {
@@ -105,12 +191,28 @@ form {
 	gap: 0.75rem;
 }
 
+.labelContainer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: 2rem;
+	padding: 0 1rem;
+}
+
 label {
 	margin-left: 1rem;
+	font-size: 0.8rem;
 }
 
 .label {
 	color: var(--electric-blue);
+	font-family: var(--computer-font);
+}
+
+.error {
+	color: var(--electric-yellow);
+	font-size: 0.8rem;
 	font-family: var(--computer-font);
 }
 
@@ -138,5 +240,18 @@ textarea {
 }
 .actions:first-child {
 	flex: 0 1 25%;
+}
+
+.success {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.successMessage {
+	color: var(--electric-green);
+	text-align: center;
+	font-size: 1rem;
+	font-family: var(--computer-font);
 }
 </style>

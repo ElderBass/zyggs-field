@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
+import BasePage from "./components/ui/BasePage.vue";
 import BaseCard from "./components/ui/BaseCard.vue";
 import BaseButton from "./components/ui/BaseButton.vue";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -14,6 +15,7 @@ const app = createApp(App);
 app.use(router);
 
 app.component("font-awesome-icon", FontAwesomeIcon);
+app.component("base-page", BasePage);
 app.component("base-card", BaseCard);
 app.component("base-button", BaseButton);
 
