@@ -1,12 +1,12 @@
 <template>
-	<button :class="type">
+	<button :disabled="disabled" :class="buttonStyle">
 		<slot></slot>
 	</button>
 </template>
 
 <script>
 export default {
-	props: ["type"],
+	props: ["buttonStyle", "disabled"],
 };
 </script>
 
@@ -25,9 +25,18 @@ button:hover {
 	background: var(--electric-blue);
 }
 
+button:disabled {
+	background: var(--disabled-gray);
+	opacity: 0.5;
+}
+
 .link {
 	background: none;
 	color: var(--electric-pink);
 	padding: 0.5rem 1rem;
+}
+.link:hover {
+	color: var(--electric-blue);
+	background: none;
 }
 </style>

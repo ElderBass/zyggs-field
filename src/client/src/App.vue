@@ -1,14 +1,25 @@
 <template>
 	<the-header />
-	<router-view />
+	<router-view v-slot="slotProps">
+		<transition name="pageChange" mode="out-in">
+			<component :is="slotProps.Component" :key="slotProps.Component" />
+		</transition>
+	</router-view>
 </template>
 
 <script>
 import TheHeader from "./components/nav/TheHeader.vue";
+import { init } from "@emailjs/browser";
 
 export default {
 	components: {
 		TheHeader,
+	},
+	mounted() {
+		init({
+			publicKey: "TgN0KvdoTkCYEQ2uD",
+			blockHeadless: true,
+		});
 	},
 };
 </script>
@@ -17,9 +28,13 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap");
 
 :root {
-	--pink: #ff2e63;
+	--deep-pink: #ff1493;
+	--disabled-gray: #808080;
 	--electric-pink: #ff00a8;
 	--electric-blue: #00f0ff;
+	--electric-green: #00ff00;
+	--electric-yellow: #ffff00;
+	--electic-purple: #8000ff;
 	--abyssal-black: #130d11;
 	--main-font: "Quicksand", sans-serif;
 	--computer-font: "Fira Code", monospace;
@@ -53,5 +68,31 @@ h4,
 h5,
 h6 {
 	margin: 0;
+}
+
+.pageChange-enter-active {
+	animation: fadeIn 0.33s ease-out;
+}
+
+.pageChange-leave-active {
+	animation: fadeOut 0.33s ease-out;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
 }
 </style>

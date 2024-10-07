@@ -9,6 +9,7 @@
     "format": "prettier --write 'src/**/*.{js,css,vue}'"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "core-js": "^3.8.3",
     "vue": "^3.2.13",
     "vue-router": "^4.4.5",
