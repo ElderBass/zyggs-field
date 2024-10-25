@@ -16,7 +16,7 @@ button {
 	background: var(--electric-pink);
 	color: var(--abyssal-black);
 	border: none;
-	padding: 1.5rem 2rem;
+	padding: 1.2rem 2rem;
 	font-size: 1rem;
 	border-radius: 3rem;
 }
