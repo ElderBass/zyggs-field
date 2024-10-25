@@ -1,20 +1,12 @@
 <template>
-	<a v-if="isLink" :href="href">
-		<slot></slot>
-	</a>
-	<button v-else :disabled="disabled" :class="buttonStyle">
+	<button :disabled="disabled" :class="buttonStyle">
 		<slot></slot>
 	</button>
 </template>
 
 <script>
 export default {
-	props: ["buttonStyle", "disabled", "href"],
-	computed: {
-		isLink() {
-			return this.buttonStyle === "link" && this.href;
-		},
-	},
+	props: ["buttonStyle", "disabled"],
 };
 </script>
 
