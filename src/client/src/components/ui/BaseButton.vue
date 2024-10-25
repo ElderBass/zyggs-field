@@ -1,12 +1,20 @@
 <template>
-	<button :disabled="disabled" :class="buttonStyle">
+	<a v-if="isLink" :href="href">
+		<slot></slot>
+	</a>
+	<button v-else :disabled="disabled" :class="buttonStyle">
 		<slot></slot>
 	</button>
 </template>
 
 <script>
 export default {
-	props: ["buttonStyle", "disabled"],
+	props: ["buttonStyle", "disabled", "href"],
+	computed: {
+		isLink() {
+			return this.buttonStyle === "link" && this.href;
+		},
+	},
 };
 </script>
 
@@ -16,7 +24,7 @@ button {
 	background: var(--electric-pink);
 	color: var(--abyssal-black);
 	border: none;
-	padding: 1.5rem 2rem;
+	padding: 1.2rem 2rem;
 	font-size: 1rem;
 	border-radius: 3rem;
 }

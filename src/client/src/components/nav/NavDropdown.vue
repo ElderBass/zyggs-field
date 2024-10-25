@@ -49,7 +49,6 @@ export default {
 <style scoped>
 .navDropdown {
 	position: relative;
-	background: var(--abyssal-black);
 	font-family: "Fira Code", monospace;
 	z-index: 1000;
 }
@@ -74,11 +73,12 @@ export default {
 	position: absolute;
 	border: solid 2px var(--electric-blue);
 	right: 0;
+	top: 0.8rem;
 	display: flex;
 	justify-content: center;
 	border-radius: 50%;
-	width: 180px;
-	height: 180px;
+	width: 224px;
+	height: 224px;
 	background: var(--abyssal-black);
 }
 
@@ -114,7 +114,7 @@ li:last-child {
 @keyframes fadeIn {
 	from {
 		opacity: 0;
-		transform: translateY(-3rem) scale(0.8);
+		transform: translateY(-4rem) scale(0.8);
 	}
 	to {
 		opacity: 1;
@@ -129,7 +129,7 @@ li:last-child {
 	}
 	to {
 		opacity: 0;
-		transform: translateY(-3rem) scale(0.8);
+		transform: translateY(-4rem) scale(0.8);
 	}
 }
 </style>

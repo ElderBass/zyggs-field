@@ -1,7 +1,7 @@
 <template>
 	<base-page>
-		<h1>function <span class="headerSpan">contactSeth()</span></h1>
 		<base-card>
+			<h1>function <span class="headerSpan">contactSeth()</span></h1>
 			<form @submit.prevent="submitPing">
 				<div class="inputField">
 					<div class="labelContainer">
@@ -9,7 +9,7 @@
 							>const <span class="label">name</span> =</label
 						>
 						<p v-if="errors.name" class="error">
-							ERR: {{ errors.name }}
+							err! {{ errors.name }}
 						</p>
 					</div>
 
@@ -27,7 +27,7 @@
 							>const <span class="label">email</span> =</label
 						>
 						<p v-if="errors.email" class="error">
-							ERR: {{ errors.email }}
+							err! {{ errors.email }}
 						</p>
 					</div>
 
@@ -46,7 +46,7 @@
 							>const <span class="label">message</span> =</label
 						>
 						<p v-if="errors.message" class="error">
-							ERR: {{ errors.message }}
+							err! {{ errors.message }}
 						</p>
 					</div>
 					<textarea
@@ -169,11 +169,14 @@ export default {
 h1 {
 	font-family: var(--computer-font);
 	font-size: 1.5rem;
-	margin-bottom: 1.5rem;
+	margin-bottom: 1rem;
+	width: 40%;
+	padding-left: 1rem;
 }
 
 .headerSpan {
 	color: var(--electric-blue);
+	margin-left: 1rem;
 }
 
 form {
@@ -197,22 +200,22 @@ form {
 	justify-content: space-between;
 	width: 100%;
 	height: 2rem;
-	padding: 0 1rem;
 }
 
 label {
-	margin-left: 1rem;
+	margin-left: 0.5rem;
 	font-size: 0.8rem;
 }
 
 .label {
 	color: var(--electric-blue);
 	font-family: var(--computer-font);
+	font-size: 0.9rem;
 }
 
 .error {
 	color: var(--electric-yellow);
-	font-size: 0.8rem;
+	font-size: 12px;
 	font-family: var(--computer-font);
 }
 
@@ -229,7 +232,7 @@ label {
 }
 
 textarea {
-	height: 10rem;
+	height: 8rem;
 }
 
 .actions {

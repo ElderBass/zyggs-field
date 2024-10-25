@@ -26,9 +26,10 @@ export default {
 	data() {
 		return {
 			navLinks: [
-				{ url: "/who-am-i", text: "whoami" },
+				{ url: "/", text: "home" },
+				{ url: "/who-am-i", text: "who_am_i" },
 				{ url: "/prolixities", text: "prolixities" },
-				{ url: "/ping-me", text: "ping me" },
+				{ url: "/ping-me", text: "ping_me" },
 			],
 			width: window.innerWidth,
 		};
@@ -65,8 +66,8 @@ header {
 	color: var(--electric-pink);
 	font-size: 2rem;
 	text-decoration: none;
-	text-shadow: -2px -2px 0 #000, 2px -2px 0 var(--electric-blue),
-		-2px 2px 0 var(--electric-blue), 2px 2px 0 var(--electric-blue);
+	text-shadow: -1.5px -1.5px 0 #000, 1.5px -1.5px 0 var(--electric-blue),
+		-1.5px 1.5px 0 var(--electric-blue), 1.5px 1.5px 0 var(--electric-blue);
 }
 nav {
 	display: flex;

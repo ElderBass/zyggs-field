@@ -34,7 +34,8 @@ export default {
 	--electric-blue: #00f0ff;
 	--electric-green: #00ff00;
 	--electric-yellow: #ffff00;
-	--electic-purple: #8000ff;
+	--electric-purple: #8000ff;
+	--abyssal-pink: #1c1c1c;
 	--abyssal-black: #130d11;
 	--main-font: "Quicksand", sans-serif;
 	--computer-font: "Fira Code", monospace;
@@ -50,8 +51,7 @@ html {
 
 body {
 	margin: 0;
-	background-color: var(--abyssal-black);
-	width: 100vw;
+	background: black;
 	height: 100vh;
 	font-family: var(--main-font);
 	color: var(--electric-blue);
@@ -68,6 +68,17 @@ h4,
 h5,
 h6 {
 	margin: 0;
+}
+
+.pageHeader {
+	color: var(--electric-pink);
+	font-family: var(--computer-font);
+	font-size: 1.75rem;
+	margin-bottom: 2rem;
+}
+
+.pageName {
+	color: var(--electric-blue);
 }
 
 .pageChange-enter-active {
