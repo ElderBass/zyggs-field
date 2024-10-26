@@ -1,7 +1,8 @@
 <template>
 	<base-card>
 		<div class="projectContainer">
-			<img :src="imageSrc" :alt="getAltTag()" />
+			<image-carousel v-if="showCarousel" :images="images" />
+			<img v-else :src="images[0].src" :alt="images[0].alt" />
 			<div class="content">
 				<h1>{{ name }}</h1>
 				<p>{{ description }}</p>
@@ -21,15 +22,24 @@
 </template>
 
 <script>
+import ImageCarousel from "./ImageCarousel.vue";
 import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter";
 
 export default {
-	props: ["name", "imageSrc", "description", "links"],
+	components: {
+		ImageCarousel,
+	},
+	props: ["name", "images", "description", "links"],
 	methods: {
 		getAltTag() {
 			return this.name + " Image";
 		},
 		capitalizeFirstLetter,
+	},
+	computed: {
+		showCarousel() {
+			return this.images.length > 1;
+		},
 	},
 };
 </script>
@@ -50,6 +60,8 @@ img {
 	display: flex;
 	flex-direction: column;
 	text-align: right;
+	flex: 1 0 50%;
+	padding-right: 1rem;
 }
 h1 {
 	color: var(--electric-blue);
@@ -59,6 +71,6 @@ h1 {
 .links {
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
+	gap: 0.75rem;
 }
 </style>

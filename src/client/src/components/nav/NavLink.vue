@@ -32,7 +32,6 @@ export default {
 .nav-link {
 	color: var(--electric-pink);
 	font-size: 1rem;
-	text-decoration: underline;
 }
 
 .dropdown {
@@ -46,5 +45,6 @@ export default {
 
 .active {
 	color: var(--electric-blue);
+	text-decoration: underline;
 }
 </style>

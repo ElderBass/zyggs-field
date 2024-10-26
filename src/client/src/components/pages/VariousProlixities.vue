@@ -1,9 +1,11 @@
 <template>
 	<base-page>
 		<h1 class="pageHeader">
-			class <span class="pageName">Prolixities</span> {}
+			const <span class="pageName">Prolixities</span>: Musing<span
+				:style="{ color: 'var(--electric-blue)' }"
+				>[]</span
+			>
 		</h1>
-
 		<base-card>
 			<h3>Something idk</h3>
 			<p>
