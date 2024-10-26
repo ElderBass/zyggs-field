@@ -73,12 +73,13 @@ h6 {
 .pageHeader {
 	color: var(--electric-pink);
 	font-family: var(--computer-font);
-	font-size: 1.75rem;
+	font-size: 1.25rem;
 	margin-bottom: 2rem;
 }
 
 .pageName {
 	color: var(--electric-blue);
+	font-size: 1.5rem;
 }
 
 .pageChange-enter-active {

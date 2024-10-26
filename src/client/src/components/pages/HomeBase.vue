@@ -1,7 +1,10 @@
 <template>
 	<base-page>
 		<h1 class="pageHeader">
-			class <span class="pageName">Portfolio</span> {}
+			const <span class="pageName">Portfolio</span>: Project<span
+				:style="{ color: 'var(--electric-blue)' }"
+				>[]</span
+			>
 		</h1>
 		<div class="projects">
 			<project-card
@@ -10,7 +13,7 @@
 				:name="project.name"
 				:description="project.description"
 				:links="project.links"
-				:imageSrc="project.imageSrc"
+				:images="project.images"
 			/>
 		</div>
 	</base-page>
@@ -28,7 +31,20 @@ export default {
 				{
 					name: "shworlde",
 					description: "Definitely NOT a Wordle clone...",
-					imageSrc: require("../../assets/shwordle.png"),
+					images: [
+						{
+							src: require("../../assets/shwordle/shwordle.png"),
+							alt: "Shwordle image",
+						},
+						{
+							src: require("../../assets/shwordle/game-end.png"),
+							alt: "Shwordle game end image",
+						},
+						{
+							src: require("../../assets/shwordle/shwordle-stats.png"),
+							alt: "Shwordle stats image",
+						},
+					],
 					links: {
 						github: "https://github.com/ElderBass/shwordle",
 						live: "https://elderbass.github.io/shwordle/",
@@ -36,8 +52,29 @@ export default {
 				},
 				{
 					name: "flip",
-					description: "A scoial flash-card app with live chat",
-					imageSrc: require("../../assets/flip/flip.png"),
+					description: "A social flash-card app with live chat",
+					images: [
+						{
+							src: require("../../assets/flip/flip.png"),
+							alt: "Flip landing page",
+						},
+						{
+							src: require("../../assets/flip/home.png"),
+							alt: "Flip home page",
+						},
+						{
+							src: require("../../assets/flip/edit-deck.png"),
+							alt: "Flip edit deck page",
+						},
+						{
+							src: require("../../assets/flip/study-deck.png"),
+							alt: "Flip study deck page",
+						},
+						{
+							src: require("../../assets/flip/chat.png"),
+							alt: "Flip chat page",
+						},
+					],
 					links: {
 						github: "",
 						live: "",
@@ -55,6 +92,7 @@ export default {
 .projects {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	gap: 1.5rem;
 	height: 100%;
 	width: 100%;
