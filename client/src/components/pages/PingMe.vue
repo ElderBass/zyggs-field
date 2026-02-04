@@ -5,79 +5,44 @@
 			<form @submit.prevent="submitPing">
 				<div class="inputField">
 					<div class="labelContainer">
-						<label for="name"
-							>const <span class="label">name</span> =</label
-						>
+						<label for="name">const <span class="label">name</span> =</label>
 						<p v-if="errors.name" class="error">
 							err! {{ errors.name }}
 						</p>
 					</div>
 
-					<input
-						class="input"
-						id="name"
-						name="name"
-						v-model="name"
-						@blur="validateString('name')"
-					/>
+					<input class="input" id="name" name="name" v-model="name" @blur="validateString('name')" />
 				</div>
 				<div class="inputField">
 					<div class="labelContainer">
-						<label for="email"
-							>const <span class="label">email</span> =</label
-						>
+						<label for="email">const <span class="label">email</span> =</label>
 						<p v-if="errors.email" class="error">
 							err! {{ errors.email }}
 						</p>
 					</div>
 
-					<input
-						class="input"
-						type="email"
-						id="email"
-						name="email"
-						v-model="email"
-						@blur="validateEmail"
-					/>
+					<input class="input" type="email" id="email" name="email" v-model="email" @blur="validateEmail" />
 				</div>
 				<div class="inputField">
 					<div class="labelContainer">
-						<label for="message"
-							>const <span class="label">message</span> =</label
-						>
+						<label for="message">const <span class="label">message</span> =</label>
 						<p v-if="errors.message" class="error">
 							err! {{ errors.message }}
 						</p>
 					</div>
-					<textarea
-						class="input"
-						id="message"
-						name="message"
-						v-model="message"
-						@blur="validateString('message')"
-					></textarea>
+					<textarea class="input" id="message" name="message" v-model="message"
+						@blur="validateString('message')"></textarea>
 				</div>
 				<div v-if="!submitted" class="actions">
-					<base-button
-						type="button"
-						buttonStyle="link"
-						@click="goBack"
-						>return</base-button
-					>
-					<base-button type="submit" :disabled="disabled"
-						>Submit</base-button
-					>
+					<base-button type="button" buttonStyle="link" @click="goBack">return</base-button>
+					<base-button type="submit" :disabled="disabled">Submit</base-button>
 				</div>
 				<p v-if="submitting">...</p>
 				<div v-if="submitted" class="success">
 					<p class="successMessage">
 						Message submitted. You may exit this terminal.
 					</p>
-					<base-button
-						type="button"
-						buttonStyle="link"
-						@click="goBack"
-					>
+					<base-button type="button" buttonStyle="link" @click="goBack">
 						exit
 					</base-button>
 				</div>
@@ -87,7 +52,7 @@
 </template>
 
 <script>
-import { send } from "@emailjs/browser";
+import { sendZyggsParticle } from "@/utils/sendSlackPing";
 
 export default {
 	data() {
@@ -112,15 +77,20 @@ export default {
 					return;
 				}
 				this.submitting = true;
-				await send(
-					"service_1gqhxeh", // service ID
-					"template_yxhmh65", // template ID
-					{
-						name: this.name,
-						email: this.email,
-						message: this.message,
-					},
-				);
+
+				const data = { name: this.name, email: this.email, message: this.message };
+
+				const response = await sendZyggsParticle(data);
+				if (response.success) {
+					this.submitted = true;
+					this.submitting = false;
+					this.errors = {
+						name: "",
+						email: "",
+						message: "",
+						submit: "",
+					};
+				}
 
 				this.email = "";
 				this.name = "";
@@ -241,6 +211,7 @@ textarea {
 	justify-content: space-evenly;
 	color: var(--electric-blue);
 }
+
 .actions:first-child {
 	flex: 0 1 25%;
 }
