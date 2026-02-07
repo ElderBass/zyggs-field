@@ -5,7 +5,7 @@ import PingMe from "./components/pages/PingMe.vue";
 import VariousProlixities from "./components/pages/VariousProlixities.vue";
 
 const router = createRouter({
-	history: createWebHistory(),
+	history: createWebHistory(process.env.BASE_URL),
 	routes: [
 		{ path: "/", component: HomeBase },
 		{ path: "/who-am-i", component: AboutMe },
