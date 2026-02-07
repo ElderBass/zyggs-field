@@ -1,27 +1,27 @@
 <template>
 	<div class="carouselContainer">
-		<transition
-			v-for="(image, i) in images"
-			v-show="i === imageIndex"
-			:key="image.src"
-			mode="out-in"
-			name="carousel"
-			@before-enter="beforeEnter"
-			@enter="enter"
-			@leave="leave"
-		>
+		<transition v-for="(image, i) in images" v-show="i === imageIndex" :key="image.src" mode="out-in"
+			name="carousel" @before-enter="beforeEnter" @enter="enter" @leave="leave">
 			<img :src="image.src" :alt="image.alt" />
 		</transition>
 	</div>
 </template>
 
 <script>
+import { getProjectCarouselInterval } from '@/utils/getProjectCarouselInterval';
+
 export default {
 	props: ["images"],
 	data() {
 		return {
 			imageIndex: 0,
+			transitionDuration: 1000,
 		};
+	},
+	computed: {
+		interval() {
+			return getProjectCarouselInterval();
+		},
 	},
 	methods: {
 		nextImage() {
@@ -46,18 +46,18 @@ export default {
 				el.style.transition = "opacity 1s";
 				el.style.opacity = 1;
 				done();
-			}, 1000); // Delay to ensure the outgoing image fully fades out
+			}, this.transitionDuration); // Delay to ensure the outgoing image fully fades out
 		},
 		leave(el, done) {
 			el.style.transition = "opacity 1s";
 			el.style.opacity = 0;
-			setTimeout(done, 1000); // Duration of the fade-out transition
+			setTimeout(done, this.transitionDuration); // Duration of the fade-out transition
 		},
 	},
 	created() {
 		setInterval(() => {
 			this.nextImage();
-		}, 3000);
+		}, this.interval);
 	},
 };
 </script>
